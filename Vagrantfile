@@ -23,6 +23,7 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 3306, host: 3306
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -66,7 +67,20 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
    config.vm.provision "shell", inline: <<-SHELL
     apt-get update
-    apt-get install -y curl apache2
+    apt-get install -y \
+      curl \
+      apache2 \
+      mysql-server \
+      mysql-client
+
+    sed -i.bak s/127.0.0.1/0.0.0.0/g /etc/mysql/mariadb.conf.d/50-server.cnf
+    mysql -e "CREATE USER 'vagrant'@'%' IDENTIFIED BY 'vagrant';"
+    mysql -e "GRANT ALL PRIVILEGES ON * . * TO 'vagrant'@'%' WITH GRANT OPTION;"
+    mysql -e "FLUSH PRIVILEGES;"
+
+    service mysql stop
+    service mysql start
+
    SHELL
 end
 
