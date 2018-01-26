@@ -2,11 +2,15 @@
 - User
   - email_address
   - user_name
+  - created_date
+  - modified_date
 - Image
   - filename
   - file_size
   - uploaded_by_user
   - path
+  - created_date
+  - modified_date
 - Comment
   - 
 - ImageUser
@@ -14,6 +18,6 @@
 - CommentImage
 - Follow
 
-- all tables
+- all tables need:
   - created_date
   - modified_date
