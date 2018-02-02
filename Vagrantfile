@@ -77,9 +77,35 @@ Vagrant.configure("2") do |config|
     mysql -e "CREATE USER 'vagrant'@'%' IDENTIFIED BY 'vagrant';"
     mysql -e "GRANT ALL PRIVILEGES ON * . * TO 'vagrant'@'%' WITH GRANT OPTION;"
     mysql -e "FLUSH PRIVILEGES;"
+	
+	# Stahp MySQL
+	service mysql stop
 
-    service mysql stop
+	# Unstahp MySQL by way of waiting
     service mysql start
+	until mysqladmin ping; do
+		sleep 2
+	done
+
+	# Import SQL data if there is a .sql file in the /fastpic dir
+	DBPATH="$(find / -path \*fastpic/schema.sql)"
+	if [ ! -z $DBPATH ]; then
+		# Set variable name to project name (fastpic) and create db with that name
+		DBNAME="fastpic"
+		mysqladmin -u vagrant -pvagrant create $DBNAME.sql
+
+		# Import the SQL file into the created db
+		`mysql -u vagrant -pvagrant $DBNAME < $DBPATH`
+	fi
+  
+	# Stahp MySQL again
+	service mysql stop
+
+	# Unstahp MySQL by way of waiting once more
+    service mysql start
+	until mysqladmin ping; do
+		sleep 2
+	done
 
    SHELL
 end
