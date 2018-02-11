@@ -47,3 +47,14 @@ CREATE TABLE follow (
  FOREIGN KEY (follower_user_id) REFERENCES user(user_id) ON DELETE CASCADE,
  PRIMARY KEY (follow_id)
 );
+
+CREATE TABLE likes (
+  like_id INT NOT NULL,
+  image_id INT NOT NULL,
+  comment_id INT NOT NULL,
+  user_id INT NOT NULL,
+  FOREIGN KEY (image_id) REFERENCES image(image_id),
+  FOREIGN KEY (comment_id) REFERENCES comment(comment_id),
+  FOREIGN KEY (user_id) REFERENCES user(user_id),
+  PRIMARY KEY (like_id)
+  );
