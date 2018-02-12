@@ -1,22 +1,4 @@
-<?php
-// Set error reporting for local debugging
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// Import the bootstrap
-$query = require('../app/bootstrap.php');
-
-/*
-// Include the class of what we are fetching
-require '../app/User.php';
-// Use the QueryBuilder to select all users from the user table
-$users = $query->selectAll('user', 'User');
-
-var_dump($users);
-*/
-
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -33,6 +15,11 @@ var_dump($users);
           <li><a href="about.php">About Us</a></li>
           <li><a href="contact.php">Contact Us</a></li>
         </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2>Contact Us</h2>
       </div>
     </div>
   </div>
