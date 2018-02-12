@@ -1,4 +1,5 @@
 /.idea
 /.vagrant
 /.vscode
-.sublime-project
+*.sublime-project
+*.sublime-workspace
