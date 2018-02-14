@@ -1,11 +1,11 @@
 <?php
 
 // Grab the config array
-$config = require '../config.php';
+$config = require 'config.php';
 // Database connection
-require('database/Connection.php');
+require('connection.php');
 // Helps to build SQL Queries
-require('database/QueryBuilder.php');
+require('query-builder.php');
 
 // Initialize the QueryBuilder and pass it a DB connection
 return new QueryBuilder(

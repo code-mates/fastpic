@@ -5,16 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Import the bootstrap
-$query = require('../app/bootstrap.php');
-
-/*
-// Include the class of what we are fetching
-require '../app/User.php';
-// Use the QueryBuilder to select all users from the user table
-$users = $query->selectAll('user', 'User');
-
-var_dump($users);
-*/
+$query = require('core/bootstrap.php');
 
 ?><!DOCTYPE html>
 <html lang="en">
