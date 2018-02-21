@@ -15,10 +15,10 @@ class Connection
     try {
       // Connects to mysql and uses the information provide inside the config.php file
       return new PDO(
-        $config['database']['host'].';dbname='.$config['database']['dbname'],
-        $config['database']['username'],
-        $config['database']['password'],
-        $config['database']['options']
+        $config['host'].';dbname='.$config['dbname'],
+        $config['username'],
+        $config['password'],
+        $config['options']
       );
   	} catch (PDOException $e) {
   	  die($e->getMessage());
