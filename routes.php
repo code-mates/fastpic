@@ -1,7 +1,7 @@
 <?php
 
 $router->define([
-  '' => 'controlers/index.php',
+  '' => 'controllers/index.php',
   'about' => 'controllers/about.php',
   'contact' => 'controllers/contact.php'
 ]);

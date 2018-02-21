@@ -1,4 +1,5 @@
 <?php
+require 'core/user.php';
 
 $users = $database->selectAll('user', 'User');
 
