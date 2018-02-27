@@ -6,6 +6,9 @@ use App\Core\App;
 
 class UsersController
 {
+	/**
+	 * Show all users
+	 */
 	public function index()
 	{
 		$users = App::get('database')->selectAll('user');
@@ -13,6 +16,9 @@ class UsersController
 		return view('users', compact('users'));
 	}
 
+	/**
+	 * Store the new user into the database
+	 */
 	public function store()
 	{
 		App::get('database')->insert('user', [

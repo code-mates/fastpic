@@ -1,19 +1,20 @@
 <?php
 
-/**
- * Database connection class
- */
+namespace App\Core\Database;
+
+use PDO;
+use PDOException;
+
 class Connection
 {
   /**
-   * Static connection
-   * @param  [type] $config [description]
-   * @return [type]         [description]
+   * Create a new PDO connection.
+   *
+   * @param  array $config
    */
   public static function make($config)
   {
     try {
-      // Connects to mysql and uses the information provide inside the config.php file
       return new PDO(
         $config['host'].';dbname='.$config['dbname'],
         $config['username'],

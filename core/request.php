@@ -2,11 +2,13 @@
 
 namespace App\Core;
 
-/**
- * Request Class
- */
 class Request
 {
+	/**
+	 * Fetch the request URI
+	 *
+	 * @return string
+	 */
 	public static function uri()
 	{
 		return trim(
@@ -14,6 +16,11 @@ class Request
 		);
 	}
 
+	/**
+	 * Fetch the request method
+	 * 
+	 * @return string
+	 */
 	public static function method()
 	{
 		return $_SERVER['REQUEST_METHOD'];
