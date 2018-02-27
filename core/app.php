@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core;
+
 class App
 {
 	protected static $registery = [];
@@ -14,7 +16,7 @@ class App
 		if (! array_key_exists($key, static::$registery)) {
 			throw new Expection("No {$key} is bound in the container");
 		}
-		
+
 		return static::$registery[$key];
 	}
 }
