@@ -1,0 +1,8 @@
+{
+    "name": "codemates/fastpic",
+    "autoload": {
+      "classmap": [
+        "./"
+      ]
+    }
+}
