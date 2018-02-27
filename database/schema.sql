@@ -1,45 +1,45 @@
-DROP DATABASE IF EXISTS fastpic;
-CREATE DATABASE IF NOT EXISTS fastpic;
-USE fastpic;
+-- minor updates
+DROP DATABASE IF EXISTS `fastpic`;
+CREATE DATABASE IF NOT EXISTS `fastpic`;
+USE `fastpic`;
 
 CREATE TABLE user (
- email_address varchar(255),
- name varchar (255),
- user_id INT NOT NULL,
- PRIMARY KEY (user_id),
+ user_id INT NOT NULL AUTO_INCREMENT,
+ user_name VARCHAR(255),
+ email_address VARCHAR(255),
  created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- modified_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+ modified_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (user_id)
 );
 
 CREATE TABLE image (
- filename varchar (255),
- image_id INT NOT NULL,
- PRIMARY KEY (image_id),
+ image_id INT NOT NULL AUTO_INCREMENT,
+ filename VARCHAR(255),
+ image_url TEXT NOT NULL,
+ image_path TEXT,
  uploaded_by_user_id INT NOT NULL,
- image_url text NOT NULL,
- FOREIGN KEY (uploaded_by_user_id) REFERENCES user(user_id),
  created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
  modified_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- path text
+ FOREIGN KEY (uploaded_by_user_id) REFERENCES user(user_id),
+ PRIMARY KEY (image_id)
 );
 
 CREATE TABLE comment (
+ comment_id INT NOT NULL AUTO_INCREMENT,
  image_id INT NOT NULL,
- FOREIGN KEY (image_id) REFERENCES image(image_id) ON DELETE CASCADE,
  user_id INT NOT NULL,
- FOREIGN KEY (user_id) REFERENCES user(user_id),
- comment_id INT NOT NULL,
- PRIMARY KEY (comment_id),
- -- [No_Column name]TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- text text,
+ comment_body TEXT,
  created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- modified_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+ modified_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY (image_id) REFERENCES image(image_id) ON DELETE CASCADE,
+ FOREIGN KEY (user_id) REFERENCES user(user_id),
+ PRIMARY KEY (comment_id)
 );
 
 CREATE TABLE follow (
+ follow_id INT NOT NULL AUTO_INCREMENT,
  leader_user_id INT NOT NULL,
  follower_user_id INT NOT NULL,
- follow_id INT NOT NULL,
  timestamp_id INT NOT NULL,
  created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
  modified_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
