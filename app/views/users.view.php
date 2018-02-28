@@ -5,7 +5,6 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">ID</th>
             <th scope="col">User Name</th>
             <th scope="col">Email Address</th>
           </tr>
@@ -15,8 +14,7 @@
       ?>
         <tr>
           <?php
-            echo '<td>' . $user->user_id . '</td>';
-            echo '<td>' . $user->user_name . '</td>';
+            echo '<td><a href="/users/' . $user->user_id .'">' . $user->user_name . '</a></td>';
             echo '<td>' . $user->email_address . '</td>';
            ?>
         </tr>

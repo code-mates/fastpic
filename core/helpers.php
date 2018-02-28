@@ -19,3 +19,11 @@ function redirect($path)
 {
     header("Location: /{$path}");
 }
+
+/**
+ * Pretty Print a var_dump
+ * @param  any $data
+ */
+function pp($data) {
+  echo '<pre>'. var_export($data, true) . '</pre>';
+}

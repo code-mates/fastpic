@@ -14,8 +14,11 @@ class Router
     'POST' => []
   ];
 
-  public $controller = '';
-
+  /**
+   * URL Parameters
+   *
+   * @var array
+   */
   public $params = [];
 
   /**
@@ -60,7 +63,7 @@ class Router
    */
   public function direct($uri, $requestType)
   {
-    $this->match($uri, $requestType);
+    $controller = $this->match($uri, $requestType);
 
     if (array_key_exists($uri, $this->routes[$requestType])) {
       return $this->callAction(
@@ -68,9 +71,9 @@ class Router
       );
     }
 
-    if ($this->controller !== '') {
+    if ($controller) {
       return $this->callAction(
-        ...explode('@', $this->controller)
+        ...explode('@', $controller)
       );
     }
 
@@ -95,6 +98,13 @@ class Router
     return (!empty($this->params)) ? $controller->$action(array_values($this->params)[0]) : $controller->$action();
   }
 
+  /**
+   * Looks for {param} in the router uri and returns the controller to use
+   *
+   * @param  string $uri         [description]
+   * @param  string $requestType [description]
+   * @return string/boolean 
+   */
   public function match($uri, $requestType)
   {
     foreach($this->routes[$requestType] as $route => $controller)
@@ -110,14 +120,15 @@ class Router
           continue;
         }
 
-        $this->controller = $controller;
-
         foreach ($argument_keys as $key => $name) {
           if (isset($matches[$key+1])) {
             $this->params[$name] = $matches[$key+1];
           }
         }
+
+        return $controller;
       }
     }
+    return false;
   }
 }
