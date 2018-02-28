@@ -58,4 +58,11 @@ class QueryBuilder
       die('Whoops, something went wrong');
     }
   }
+
+  public function get($table, $id)
+  {
+    $statement = $this->pdo->prepare("SELECT * FROM {$table} WHERE {$table}_id = {$id}");
+  	$statement->execute();
+  	return $statement->fetch(PDO::FETCH_ASSOC);
+  }
 }

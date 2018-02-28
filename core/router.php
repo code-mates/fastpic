@@ -14,6 +14,10 @@ class Router
     'POST' => []
   ];
 
+  public $controller = '';
+
+  public $params = [];
+
   /**
    * Load the routes file.
    *
@@ -56,9 +60,17 @@ class Router
    */
   public function direct($uri, $requestType)
   {
+    $this->match($uri, $requestType);
+
     if (array_key_exists($uri, $this->routes[$requestType])) {
       return $this->callAction(
         ...explode('@', $this->routes[$requestType][$uri])
+      );
+    }
+
+    if ($this->controller !== '') {
+      return $this->callAction(
+        ...explode('@', $this->controller)
       );
     }
 
@@ -80,6 +92,32 @@ class Router
        throw new Expection("{$controller} does not respond to the {$action} action.");
     }
 
-    return $controller->$action();
+    return (!empty($this->params)) ? $controller->$action(array_values($this->params)[0]) : $controller->$action();
+  }
+
+  public function match($uri, $requestType)
+  {
+    foreach($this->routes[$requestType] as $route => $controller)
+    {
+      $uri = rtrim($uri, '/');
+      $matches = explode('/', $uri);
+      $route = rtrim($route, '/');
+
+      if (preg_match_all('/{(.*?)}/', $route, $argument_keys)) {
+        $argument_keys = $argument_keys[1];
+
+        if(count($argument_keys) !== (count($matches) -1)) {
+          continue;
+        }
+
+        $this->controller = $controller;
+
+        foreach ($argument_keys as $key => $name) {
+          if (isset($matches[$key+1])) {
+            $this->params[$name] = $matches[$key+1];
+          }
+        }
+      }
+    }
   }
 }

@@ -28,4 +28,11 @@ class UsersController
 
 		return redirect('users');
 	}
+
+	public function show($id)
+	{
+		$user = App::get('database')->get('user', $id);
+
+		var_dump($user);
+	}
 }

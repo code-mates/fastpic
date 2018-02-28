@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Project
+class Users
 {
   
 }
