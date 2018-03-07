@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Core\App;
+
 class PagesContoller
 {
 	/**
@@ -9,7 +11,10 @@ class PagesContoller
 	 */
 	public function home()
 	{
-		return view('index');
+		$data = [
+			'site' => App::get('config')['site']
+		];
+		return view('index', compact('data'));
 	}
 
 	/**
