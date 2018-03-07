@@ -52,13 +52,18 @@ class QueryBuilder
 
     try {
       $statement = $this->pdo->prepare($sql);
-
       $statement->execute($parameters);
     } catch(Expection $e) {
       die('Whoops, something went wrong');
     }
   }
 
+  /**
+   * Get a specific record from a table
+   *
+   * @param  string $table
+   * @param  number $id
+   */
   public function get($table, $id)
   {
     $statement = $this->pdo->prepare("SELECT * FROM {$table} WHERE {$table}_id = {$id}");

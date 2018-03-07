@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Require a view.
  *
@@ -22,6 +23,7 @@ function redirect($path)
 
 /**
  * Pretty Print a var_dump
+ *
  * @param  any $data
  */
 function pp($data) {

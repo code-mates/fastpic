@@ -29,10 +29,21 @@ class UsersController
 		return redirect('users');
 	}
 
+	/**
+	 * Show the selected user
+	 */
 	public function show($id)
 	{
 		$user = App::get('database')->get('user', $id);
 
-		var_dump($user);
+		pp($user);
+	}
+
+	/**
+	 * Show the registration form
+	 */
+	public function register()
+	{
+		return view('register');
 	}
 }
