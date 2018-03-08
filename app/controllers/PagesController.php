@@ -12,7 +12,7 @@ class PagesContoller
 	public function home()
 	{
 		$data = [
-			'site' => App::get('config')['site']
+			'body' => 'intro'
 		];
 		return view('index', compact('data'));
 	}

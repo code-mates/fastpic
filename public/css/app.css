@@ -1,25 +1,35 @@
-html {
+body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+  line-height: 1.42857143;
+  height: 100vh;
 }
 
-.container {
-  max-width: 960px;
+.intro {
+  color: #fff;
+  width: 100%;
+  background-image: url(/public/img/fastpic-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
-.pricing-header {
-  max-width: 700px;
+.intro h1 {
+  margin-top: 2em;
+  font-size: 5em;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-.card-deck .card {
-  min-width: 220px;
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
 }
 
-.border-top { border-top: 1px solid #e5e5e5; }
-.border-bottom { border-bottom: 1px solid #e5e5e5; }
-
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
