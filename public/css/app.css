@@ -46,6 +46,11 @@ body {
   color: #bbb;
 }
 
+.footer {
+  background-color: #f1f1f1;
+  padding: 50px 0;
+}
+
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
