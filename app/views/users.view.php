@@ -11,17 +11,19 @@
           </tr>
         </thead>
       <?php
+      if (!$users) {
+        echo '<tr><td colspan="2">0 Users found</td></tr>';
+      }
       foreach($users as $user):
       ?>
         <tr>
           <?php
-            echo '<td><a href="/users/' . $user->user_id .'">' . $user->user_name . '</a></td>';
+            echo '<td><a href="/profile/' . $user->user_name .'">' . $user->user_name . '</a></td>';
             echo '<td>' . $user->email_address . '</td>';
            ?>
         </tr>
       <?php endforeach; ?>
       </table>
-
     </div>
   </div>
 </div>

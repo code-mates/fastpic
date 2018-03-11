@@ -46,6 +46,10 @@ body {
   color: #bbb;
 }
 
+.profile-header {
+  text-align: center;
+}
+
 .footer {
   background-color: #f1f1f1;
   padding: 50px 0;

@@ -59,15 +59,34 @@ class QueryBuilder
   }
 
   /**
-   * Get a specific record from a table
+   * Get a specific record from a table by id
    *
    * @param  string $table
    * @param  number $id
    */
-  public function get($table, $id)
+  public function getById($table, $id)
   {
     $statement = $this->pdo->prepare("SELECT * FROM {$table} WHERE {$table}_id = {$id}");
   	$statement->execute();
   	return $statement->fetch(PDO::FETCH_ASSOC);
+  }
+
+  /**
+   * Get a specific record from a table by username
+   *
+   * @param  string $table
+   * @param  number $id
+   */
+  public function getByUsername($table, $username)
+  {
+    $statement = $this->pdo->prepare("SELECT * FROM {$table} WHERE {$table}_name = '{$username}'");
+  	$statement->execute();
+  	return $statement->fetch(PDO::FETCH_ASSOC);
+  }
+
+  public function getImagesByUserId($id) {
+    $statement = $this->pdo->prepare("SELECT * FROM image WHERE uploaded_by_user_id = {$id}");
+  	$statement->execute();
+  	return $statement->fetchAll(PDO::FETCH_CLASS);
   }
 }

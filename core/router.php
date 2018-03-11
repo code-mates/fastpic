@@ -103,20 +103,24 @@ class Router
    *
    * @param  string $uri         [description]
    * @param  string $requestType [description]
-   * @return string/boolean 
+   * @return string/boolean
    */
   public function match($uri, $requestType)
   {
-    foreach($this->routes[$requestType] as $route => $controller)
+    foreach ($this->routes[$requestType] as $route => $controller)
     {
       $uri = rtrim($uri, '/');
       $matches = explode('/', $uri);
       $route = rtrim($route, '/');
 
       if (preg_match_all('/{(.*?)}/', $route, $argument_keys)) {
+        $routes =  explode('/', $route);
         $argument_keys = $argument_keys[1];
 
-        if(count($argument_keys) !== (count($matches) -1)) {
+        if ($matches[0] !== $routes[0]) {
+          continue;
+        }
+        if (count($argument_keys) !== (count($matches) -1)) {
           continue;
         }
 

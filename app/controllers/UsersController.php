@@ -32,10 +32,9 @@ class UsersController
 	/**
 	 * Show the selected user
 	 */
-	public function show($id)
+	public function show($username)
 	{
-		$user = App::get('database')->get('user', $id);
-
+		$user = App::get('database')->getByUsername('user', $username);
 		pp($user);
 	}
 
