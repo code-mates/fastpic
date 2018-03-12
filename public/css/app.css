@@ -50,6 +50,11 @@ body {
   text-align: center;
 }
 
+.likes, .comments {
+  margin-left: 5px;
+  font-weight: 900;
+}
+
 .footer {
   background-color: #f1f1f1;
   padding: 50px 0;

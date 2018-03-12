@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
   <link rel="stylesheet" href="/public/css/app.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body class="<?= ($data) ? $data['body'] : ''; ?>">
   <?php include 'nav.php'; ?>
