@@ -22,6 +22,7 @@
 				$image->ext = pathinfo($image->image_path, PATHINFO_EXTENSION);
 				$image->filename = pathinfo($image->image_path, PATHINFO_FILENAME);
 				$image->url = "/{$image->image_url}/{$image->filename}_resize.{$image->ext}";
+				$image->since = ago($image->created_date);
 			?>
       <div class="col-md-4">
         <div class="card mb-4 box-shadow">
@@ -32,7 +33,7 @@
 							<i class="far fa-comments"></i><span class="comments">87</span>
 						</p>
             <div class="d-flex justify-content-between align-items-center">
-              <small class="text-muted">9 mins</small>
+              <small class="text-muted"><?= $image->since ?></small>
             </div>
           </div>
         </div>
