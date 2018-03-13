@@ -84,8 +84,13 @@ class QueryBuilder
   	return $statement->fetch(PDO::FETCH_ASSOC);
   }
 
-  public function getImagesByUserId($id) {
-    $statement = $this->pdo->prepare("SELECT * FROM image WHERE uploaded_by_user_id = {$id}");
+  /**
+   * Grabs all images by the users, ordering by date
+   *
+   * @param  number $user_id
+   */
+  public function getImagesByUserId($user_id) {
+    $statement = $this->pdo->prepare("SELECT * FROM image WHERE uploaded_by_user_id = {$user_id} ORDER BY created_date DESC");
   	$statement->execute();
   	return $statement->fetchAll(PDO::FETCH_CLASS);
   }

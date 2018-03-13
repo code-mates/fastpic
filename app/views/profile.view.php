@@ -16,7 +16,7 @@
     </div>
     <div class="row">
 			<?php if (!$images): ?>
-			<div class="col-md-12">No Images Found</div>
+			<div class="col-md-12 text-center">No Images Found</div>
 			<?php else: ?>
       <?php foreach($images as $image):
 				$image->ext = pathinfo($image->image_path, PATHINFO_EXTENSION);
