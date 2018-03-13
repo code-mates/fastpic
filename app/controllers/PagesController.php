@@ -14,7 +14,10 @@ class PagesContoller
 		$data = [
 			'body' => 'intro'
 		];
-		return view('index', compact('data'));
+
+		$images = App::get('database')->getImages();
+		
+		return view('index', compact('data', 'images'));
 	}
 
 	/**

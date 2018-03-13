@@ -16,23 +16,31 @@
       </div>
     </div>
     <div class="row">
-      <?php for($i = 1; $i <= 6; $i++): ?>
+			<?php if (!$images): ?>
+			<div class="col-md-12 text-center">No Images Found</div>
+			<?php else: ?>
+      <?php foreach($images as $image):
+				$image->ext = pathinfo($image->image_path, PATHINFO_EXTENSION);
+				$image->filename = pathinfo($image->image_path, PATHINFO_FILENAME);
+				$image->url = "/{$image->image_url}/{$image->filename}_resize.{$image->ext}";
+				$image->since = ago($image->created_date);
+			?>
       <div class="col-md-4">
         <div class="card mb-4 box-shadow">
-          <img class="card-img-top" alt="" style="height: 225px; width: 100%; display: block;" src="http://via.placeholder.com/348x225">
+          <img class="card-img-top" alt="" style="height: 225px; width: 100%; display: block;" src="<?= $image->url; ?>">
           <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text">
+							<i class="far fa-heart"></i><span class="likes">123,000</span> |
+							<i class="far fa-comments"></i><span class="comments">87</span>
+						</p>
             <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-              </div>
-              <small class="text-muted">9 mins</small>
+              <small class="text-muted"><?= $image->since ?></small>
             </div>
           </div>
         </div>
       </div>
-      <?php endfor; ?>
+			<?php endforeach; ?>
+			<?php endif; ?>
     </div>
   </div>
 </div>

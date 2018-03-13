@@ -94,4 +94,13 @@ class QueryBuilder
   	$statement->execute();
   	return $statement->fetchAll(PDO::FETCH_CLASS);
   }
+
+  /**
+   * Get all images
+   */
+  public function getImages() {
+    $statement = $this->pdo->prepare("SELECT * FROM image ORDER BY created_date DESC");
+  	$statement->execute();
+  	return $statement->fetchAll(PDO::FETCH_CLASS);
+  }
 }
