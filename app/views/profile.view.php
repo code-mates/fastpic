@@ -26,7 +26,9 @@
 			?>
       <div class="col-md-4">
         <div class="card mb-4 box-shadow">
-          <img class="card-img-top" alt="" style="height: 225px; width: 100%; display: block;" src="<?= $image->url; ?>">
+					<a href="/photo/<?= $image->image_id; ?>">
+	          <img class="card-img-top" alt="" style="height: 225px; width: 100%; display: block;" src="<?= $image->url; ?>">
+					</a>
           <div class="card-body">
             <p class="card-text">
 							<i class="far fa-heart"></i><span class="likes">123,000</span> |

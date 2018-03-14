@@ -68,7 +68,7 @@ class QueryBuilder
   {
     $statement = $this->pdo->prepare("SELECT * FROM {$table} WHERE {$table}_id = {$id}");
   	$statement->execute();
-  	return $statement->fetch(PDO::FETCH_ASSOC);
+  	return $statement->fetch(PDO::FETCH_OBJ);
   }
 
   /**
@@ -81,7 +81,7 @@ class QueryBuilder
   {
     $statement = $this->pdo->prepare("SELECT * FROM {$table} WHERE {$table}_name = '{$username}'");
   	$statement->execute();
-  	return $statement->fetch(PDO::FETCH_ASSOC);
+  	return $statement->fetch(PDO::FETCH_OBJ);
   }
 
   /**
@@ -93,6 +93,17 @@ class QueryBuilder
     $statement = $this->pdo->prepare("SELECT * FROM image WHERE uploaded_by_user_id = {$user_id} ORDER BY created_date DESC");
   	$statement->execute();
   	return $statement->fetchAll(PDO::FETCH_CLASS);
+  }
+
+  /**
+   * Get image by the id
+   *
+   * @param  number $photo_id
+   */
+  public function getImage($photo_id) {
+    $statement = $this->pdo->prepare("SELECT * FROM image WHERE image_id = {$photo_id}");
+  	$statement->execute();
+  	return $statement->fetch(PDO::FETCH_OBJ);
   }
 
   /**

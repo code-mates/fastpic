@@ -14,4 +14,6 @@ $router->post('users', 'UsersController@store');
 
 $router->get('profile/{username}', 'ProfileController@show');
 
+$router->get('photo/{id}', 'PhotoController@show');
+
 $router->get('register', 'UsersController@register');

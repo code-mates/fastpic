@@ -16,7 +16,7 @@ class PagesContoller
 		];
 
 		$images = App::get('database')->getImages();
-		
+
 		return view('index', compact('data', 'images'));
 	}
 
