@@ -15,7 +15,7 @@ class ProfileController
 			'body' => ''
 		];
 		$user = App::get('database')->getByUsername('user', $username);
-		$images = App::get('database')->getImagesByUserId($user['user_id']);
+		$images = App::get('database')->getImagesByUserId($user->user_id);
 
 		return view('profile', compact('data', 'user', 'images'));
 	}

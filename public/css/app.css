@@ -69,6 +69,31 @@ body {
   max-width: 100%;
 }
 
+.photo-meta {
+  padding-top: 10px;
+}
+
+.photo-container .user {
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.4em;
+  color: #525558;
+}
+
+.photo-container .user span {
+  font-size: 14px;
+  color: #aaa;
+  margin-right: 5px;
+}
+
+.photo-container .photo-data {
+  margin-top: 4px;
+}
+
+.photo-container .photo-created {
+  margin-top: 3px;
+}
+
 .footer {
   background-color: #f1f1f1;
   padding: 50px 0;

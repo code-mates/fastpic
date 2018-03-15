@@ -10,15 +10,15 @@ $image->since = ago($image->created_date);
     <div class="col">
       <div class="photo-container box-shadow">
         <img class="photo" alt="" src="<?= $image->url; ?>">
-        <div class="photo-meta">
-          <b><?= $user->user_name ?></b>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            <i class="far fa-heart"></i><span class="likes">123,000</span> |
+        <div class="photo-meta d-flex justify-content-between">
+          <div class="user d-flex justify-content-start">
+            <span>by</span> <?= $user->user_name ?>
+          </div>
+          <div class="photo-data">
+              <i class="far fa-heart"></i><span class="likes">123,000</span> |
             <i class="far fa-comments"></i><span class="comments">87</span>
-          </p>
-          <div class="d-flex justify-content-between align-items-center">
+          </div>
+          <div class="photo-created">
             <small class="text-muted"><?= $image->since ?></small>
           </div>
         </div>

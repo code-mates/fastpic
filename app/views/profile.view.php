@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 profile-header">
-			<h1><?= $user['user_name']; ?></h1>
+			<h1><?= $user->user_name; ?></h1>
 		</div>
 	</div>
 </div>
